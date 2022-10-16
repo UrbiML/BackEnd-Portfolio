@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import com.portfolio.mu.Entity.Experiencia;
 import com.portfolio.mu.Service.IExperienciaService;
 
 @RestController
+@RequestMapping("/api")
 @CrossOrigin(origins = "https://portfolio-f109e.web.app")
 
 public class ExperienciaController {
