@@ -19,8 +19,9 @@ import com.portfolio.mu.Entity.Persona;
 import com.portfolio.mu.Service.*;
 
 @RestController
-@RequestMapping("/api")
 @CrossOrigin(origins = "https://portfolio-f109e.web.app")
+@RequestMapping("/api")
+
 public class PersonaController {
 	@Autowired IPersonaService PersonaService;
 	
