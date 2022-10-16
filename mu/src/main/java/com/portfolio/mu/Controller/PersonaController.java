@@ -68,9 +68,9 @@ public class PersonaController {
 	}
 	
 	
-	/*@GetMapping("/persona/traer/perfil")
+	@GetMapping("/persona/traer/perfil")
 	public Persona findPersona() {
 		return PersonaService.findPersona((long)1);
-	}*/
+	}
 	
 }
