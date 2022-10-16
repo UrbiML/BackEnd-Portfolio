@@ -18,7 +18,6 @@ import com.portfolio.mu.Service.IExperienciaService;
 
 @RestController
 @CrossOrigin(origins = "https://portfolio-f109e.web.app")
-@RequestMapping("/api")
 
 public class ExperienciaController {
 	@Autowired IExperienciaService ExperienciaService;
