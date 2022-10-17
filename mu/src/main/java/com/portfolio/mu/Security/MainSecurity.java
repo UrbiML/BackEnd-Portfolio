@@ -73,7 +73,7 @@ public class MainSecurity{
 
 
         List<String> list1 = Arrays.asList(new String[]{"Authorization", "Cache-Control", "Content-Type"});
-        List<String> list2 = Arrays.asList(new String[]{"https://bkportfoliomu.herokuapp.com"});
+        List<String> list2 = Arrays.asList(new String[]{"https://portfolio-f109e.web.app"});
         List<String> list3 = Arrays.asList(new String[]{"GET", "POST", "PUT", "DELETE", "OPTIONS"});
         List<String> list4 = Arrays.asList(new String[]{"Authorization"});
 
@@ -85,7 +85,7 @@ public class MainSecurity{
         corsConfiguration.setExposedHeaders(list4);
 
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("**").permitAll();
+        http.authorizeRequests().antMatchers("/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.cors().configurationSource(request -> corsConfiguration);
