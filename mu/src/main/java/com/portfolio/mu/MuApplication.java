@@ -1,15 +1,15 @@
 package com.portfolio.mu;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+/*import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;*/
 
 @SpringBootApplication
 public class MuApplication {
@@ -17,9 +17,9 @@ public class MuApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MuApplication.class, args);
 	}
+}
 
-
-    @Bean
+    /*@Bean
     WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
 
@@ -47,4 +47,4 @@ public class MuApplication {
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/api", corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
-}
+}*/
