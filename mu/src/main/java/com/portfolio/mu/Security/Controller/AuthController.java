@@ -33,7 +33,7 @@ import com.portfolio.mu.Security.Dto.LoginUsuario;
 import com.portfolio.mu.Security.Dto.NuevoUsuario;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api")
 @CrossOrigin(origins = "https://portfolio-f109e.web.app")
 
 public class AuthController {
