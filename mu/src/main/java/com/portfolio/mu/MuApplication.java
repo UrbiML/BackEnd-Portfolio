@@ -26,7 +26,7 @@ public class MuApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/**").allowedOrigins("https://portfolio-f109e.web.app");
+                registry.addMapping("/api").allowedOrigins("https://portfolio-f109e.web.app");
             }
         };
     }
@@ -44,7 +44,7 @@ public class MuApplication {
                 "Access-Control-Allow-Origin", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/api", corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
 }
