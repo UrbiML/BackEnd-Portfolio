@@ -1,15 +1,15 @@
 package com.portfolio.mu;
 
-//import java.util.Arrays;
+import java.util.Arrays;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-/*import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;*/
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class MuApplication {
@@ -17,16 +17,16 @@ public class MuApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MuApplication.class, args);
 	}
-}
 
-    /*@Bean
+
+    /@Bean
     WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
 
             @Override
             public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/api").allowedOrigins("https://portfolio-f109e.web.app");
+                registry.addMapping("/api").allowedOrigins("https://bkportfoliomu.herokuapp.com");
             }
         };
     }
@@ -35,7 +35,7 @@ public class MuApplication {
     CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://portfolio-f109e.web.app"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("https://bkportfoliomu.herokuapp.com"));
 
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                 "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
@@ -47,4 +47,4 @@ public class MuApplication {
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/api", corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
-}*/
+}
