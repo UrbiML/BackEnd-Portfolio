@@ -19,14 +19,14 @@ public class MuApplication {
 	}
 
 
-    /@Bean
+    @Bean
     WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
 
             @Override
             public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/api").allowedOrigins("https://bkportfoliomu.herokuapp.com");
+                registry.addMapping("/api").allowedOrigins("https://portfolio-f109e.web.app");
             }
         };
     }
@@ -35,7 +35,7 @@ public class MuApplication {
     CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://bkportfoliomu.herokuapp.com"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("https://portfolio-f109e.web.app"));
 
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                 "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
