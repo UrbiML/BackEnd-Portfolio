@@ -8,7 +8,10 @@ import com.portfolio.mu.Security.Entity.Usuario;
 import com.portfolio.mu.Security.Enums.RolNombre;
 import com.portfolio.mu.Security.Service.RolService;
 import com.portfolio.mu.Security.Service.UsuarioService;
+import com.portfolio.mu.Security.Controller.Mensaje;
 import com.portfolio.mu.Security.jwt.JwtProvider;
+
+import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Set;
 import javax.validation.Valid;
@@ -19,7 +22,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,8 +32,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-//@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://portfolio-f109e.web.app")
+@CrossOrigin(origins = "https://localhost:4200")
+//@CrossOrigin(origins = "https://portfolio-f109e.web.app")
 public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -47,13 +49,17 @@ public class AuthController {
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
-            return new ResponseEntity(new Mensaje("Campos mal puestos o email invalido"),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Object>(new Mensaje("Campos mal puestos o email invalido"),HttpStatus.BAD_REQUEST);
         
-        if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario()))
-            return new ResponseEntity(new Mensaje("Ese nombre de usuario ya existe"), HttpStatus.BAD_REQUEST);
+        if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario())) {
+			ResponseEntity<?> responseEntity = new ResponseEntity<Object>(new Mensaje("Ese nombre de usuario ya existe"), HttpStatus.BAD_REQUEST);
+			return responseEntity;
+		}
         
-        if(usuarioService.existsByEmail(nuevoUsuario.getEmail()))
-            return new ResponseEntity(new Mensaje("Ese email ya existe"), HttpStatus.BAD_REQUEST);
+        if(usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
+			ResponseEntity<?> responseEntity = new ResponseEntity<Object>(new Mensaje("Ese email ya existe"), HttpStatus.BAD_REQUEST);
+			return responseEntity;
+		}
         
         Usuario usuario = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
             nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
@@ -66,13 +72,13 @@ public class AuthController {
         usuario.setRoles(roles);
         usuarioService.save(usuario);
         
-        return new ResponseEntity(new Mensaje("Usuario guardado"),HttpStatus.CREATED);
+        return new ResponseEntity<Object>(new Mensaje("Usuario guardado"),HttpStatus.CREATED);
     }
     
     @PostMapping("/login")
-    public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
+    public ResponseEntity<Object> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
-            return new ResponseEntity(new Mensaje("Campos mal puestos"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Object>(new Mensaje("Campos mal puestos"), HttpStatus.BAD_REQUEST);
         
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
         loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
@@ -81,11 +87,18 @@ public class AuthController {
         
         String jwt = jwtProvider.generateToken(authentication);
         
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        JwtDto jwtDto = new JwtDto(jwt);
         
-        JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
-        
-        return new ResponseEntity(jwtDto, HttpStatus.OK);
+        return new ResponseEntity<Object>(jwtDto, HttpStatus.OK);
     }
     
-}
+    
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtDto> refresh(@RequestBody JwtDto jwtDto) throws ParseException{
+    	String token = jwtProvider.refreshToken(jwtDto);
+    	JwtDto jwt = new JwtDto(token);
+    	return new ResponseEntity(jwt, HttpStatus.OK);
+    }
+    
+    
+}	

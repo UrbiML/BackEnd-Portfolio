@@ -1,42 +1,34 @@
-package com.portfolio.mu.Entity;
+package com.portfolio.mu.Dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 
-@Entity
-
-public class Persona {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+public class dtoPersona {
 	
-	@NotNull
+	@NotBlank
 	private String nombre;
-	 
-	@NotNull
+	
+	@NotBlank
 	private String apellido;
 	 
-	 
+	@NotBlank 
 	private String img;
 	
-	 
+	@NotBlank 
 	private String titulo;
 	 
-	 
+	@NotBlank 
 	private String descripcion;
-	 
-	 
-	// Constructors
-	public Persona() {
-	}
-	
-	
 
-	public Persona(@NotNull String nombre, @NotNull String apellido, String img, String titulo, String descripcion) {
+	
+	// Constructors
+	public dtoPersona() {
+	}
+
+
+
+	public dtoPersona(@NotBlank String nombre, @NotBlank String apellido, @NotBlank String img, @NotBlank String titulo,
+			@NotBlank String descripcion) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.img = img;
@@ -45,54 +37,58 @@ public class Persona {
 	}
 
 
-
-	//Getter&Setters 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	// Getters & Setters
 	public String getNombre() {
 		return nombre;
 	}
+
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+
 	public String getApellido() {
 		return apellido;
 	}
+
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
+
 	public String getImg() {
 		return img;
 	}
+
 
 	public void setImg(String img) {
 		this.img = img;
 	}
 
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
 
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
+	
 }
-

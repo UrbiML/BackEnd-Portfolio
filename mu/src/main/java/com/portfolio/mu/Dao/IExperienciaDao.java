@@ -1,9 +1,14 @@
 package com.portfolio.mu.Dao;
 
-import org.springframework.data.repository.CrudRepository;
 
 import com.portfolio.mu.Entity.Experiencia;
 
-public interface IExperienciaDao extends CrudRepository<Experiencia, Long> {
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
+public interface IExperienciaDao extends JpaRepository<Experiencia, Integer>{
+    public Optional<Experiencia> findByNombreE(String nombreE);
+    public boolean existsByNombreE(String nombreE);
 }
