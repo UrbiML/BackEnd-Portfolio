@@ -24,7 +24,7 @@ import com.portfolio.mu.Service.EducacionService;
 
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-f109e.web.app")
 
 public class EducacionController {
 	@Autowired 

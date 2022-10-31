@@ -22,7 +22,7 @@ import com.portfolio.mu.Service.*;
 
 @RestController
 @RequestMapping("/persona")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-f109e.web.app")
 
 public class PersonaController {
 	@Autowired

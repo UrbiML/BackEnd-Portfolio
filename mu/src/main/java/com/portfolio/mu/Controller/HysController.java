@@ -24,7 +24,7 @@ import com.portfolio.mu.Service.Shys;
 
 @RestController
 @RequestMapping("/skill")
-@CrossOrigin(origins = "http://localhost4200")
+@CrossOrigin(origins = "https://portfolio-f109e.web.app")
 public class HysController {
 
 	@Autowired

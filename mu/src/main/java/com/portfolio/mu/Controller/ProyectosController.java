@@ -24,7 +24,7 @@ import com.portfolio.mu.Service.ProyectosService;
 
 @RestController
 @RequestMapping("/proyectos")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://portfolio-f109e.web.app")
 public class ProyectosController {
 	@Autowired 
 	ProyectosService sProyectos;
