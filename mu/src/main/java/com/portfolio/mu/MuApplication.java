@@ -35,7 +35,7 @@ public class MuApplication {
     CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://portfolio-f109e.web.app"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("https://bkportfoliomu.herokuapp.com"));
 
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
                 "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
