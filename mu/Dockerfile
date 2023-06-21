@@ -1,4 +1,5 @@
-FROM amazoncorretto:17-alpine-jdk
+FROM amazoncorretto:11-alpine-jdk
+VOLUME /tmp
 MAINTAINER mlu
-COPY target/mu-0.0.1-SNAPSHOT.jar mu-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/mu-0.0.1-SNAPSHOT.jar"]
+COPY ./target/mu-0.0.1-SNAPSHOT.jar portfolioapp.jar
+ENTRYPOINT ["java","-jar","portfolioapp.jar"]
